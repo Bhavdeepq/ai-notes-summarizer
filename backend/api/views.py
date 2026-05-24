@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import traceback
 
-
 load_dotenv()
 
 client = OpenAI(

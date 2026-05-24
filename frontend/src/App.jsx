@@ -63,16 +63,29 @@ function App() {
       );
 
       setMessage(response.data.summary);
-    } catch (error) {
-      console.log(error);
+    } 
+    catch (error) {
+  console.log(error);
 
-      setMessage(
-        error.response?.data?.error ||
-        error.response?.data?.summary ||
-        "Upload failed"
-      );
-    }
+  if (error.code === "ECONNABORTED") {
+    setMessage(
+      "Server taking too long. Please try again."
+    );
+  }
 
+  else if (error.response) {
+    setMessage(
+      error.response.data.error ||
+      "AI service busy. Try again."
+    );
+  }
+
+  else {
+    setMessage(
+      "Backend waking up or network issue. Try again."
+    );
+  }
+}
     setLoading(false);
   };
 
