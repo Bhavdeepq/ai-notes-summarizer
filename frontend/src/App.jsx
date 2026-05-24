@@ -58,7 +58,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/upload/",
+        "https://ai-notes-summarizer-crlg.onrender.com/api/upload/",
         formData
       );
 
